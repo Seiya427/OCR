@@ -50,4 +50,4 @@ def recognizeCharacters(imagePath):
     return resultText
 
 if __name__ == '__main__':
-    recognizeCharacters('input_image.png')
+    recognizeCharacters('input.png')
