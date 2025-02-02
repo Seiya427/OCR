@@ -25,6 +25,9 @@ def prettyPrint(textArray):
         print(row)
 
 def recognizeCharacters(imagePath):
+    network = ocr.CNN()
+    saveFile = torch.load(ocr.path2)
+    network.load_state_dict(saveFile['state_dict'])
     image = Image.open(imagePath)
     binaryImage = preprocessImage(image)
     resultText = []
