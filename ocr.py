@@ -9,9 +9,8 @@ from torch import optim
 import keyboard
 import os.path
 
-path1 = r"torch2.pt"
-path2 = r"torch.pt"
-path = path2
+path = r"torch"
+
 #Sets the device used to the GPU CUDA if possible, otherwise uses the CPU
 device : torch.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') 
 
@@ -56,34 +55,6 @@ testingLoader = DataLoader(testingData,
                            num_workers=0)
 
 #Defines a convolutional neural network with 62 outputs
-class CNN1(nn.Module):
-    def __init__(self):
-        super(CNN1, self).__init__()
-        self.conv1 = nn.Sequential(         
-            nn.Conv2d(
-                in_channels=1,              
-                out_channels=16,            
-                kernel_size=5,              
-                stride=1,                   
-                padding=2,                  
-            ),                              
-            nn.ReLU(),                      
-            nn.MaxPool2d(kernel_size=2),    
-        )
-        self.conv2 = nn.Sequential(         
-            nn.Conv2d(16, 32, 5, 1, 2),     
-            nn.ReLU(),                      
-            nn.MaxPool2d(2),                
-        )
-        self.fc1 = nn.Linear(32*7*7,62)
-
-    def forward(self, x):
-        x = self.conv1(x)
-        x = self.conv2(x)
-        x = x.view(x.size(0), -1)  
-        x = self.fc1(x)
-        return x
-
 class CNN2(nn.Module):
     def __init__(self):
         super(CNN2, self).__init__()
@@ -119,7 +90,7 @@ class CNN2(nn.Module):
     
 #Creates a neural network in the GPU, as well as an evaluation function and and optimiser
 learningRate = 0.0005
-network = CNN2()
+network = CNN()
 network=network.to(device=device)
 lossFunction = nn.CrossEntropyLoss()
 optimiser = optim.RMSprop(network.parameters(), lr=learningRate)
