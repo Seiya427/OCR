@@ -50,4 +50,5 @@ def recognizeCharacters(imagePath):
     return resultText
 
 if __name__ == '__main__':
-    recognizeCharacters('input.png')
+    rawText = recognizeCharacters('input.png')
+    prettyPrint(rawText)
