@@ -1,16 +1,8 @@
 import torch
 from PIL import Image, ImageOps, ImageFilter
 import numpy as np
-import ocr
 import matplotlib.pyplot as plt
-from textblob import TextBlob
-from spellchecker import SpellChecker
 import cv2
-
-network = ocr.CNN2()
-saveFile = torch.load(ocr.path2)
-network.load_state_dict(saveFile['state_dict'])
-
 
 def preprocessImage(image):
     image = image.convert('L')
