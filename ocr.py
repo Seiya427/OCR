@@ -130,20 +130,6 @@ def train():
         epochNumber+=1
         if keyboard.is_pressed('esc'): break
 
-similar = [
-    ['s','S','5'],
-    ['o','O','0'],
-    ['1','l','I','L','J'],
-    ['p','P'],
-    ['q','9'],
-    ['W','w'],
-    ['C','c'],
-    ['Z','z','2'],
-    ['K','k','x','X'],
-    ['F','f'],
-    ['U','u'],
-    ['Y','y']
-]
 def test():
     loadCheckpoint(torch.load(path))
     figure = plt.figure()
